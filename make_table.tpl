@@ -7,7 +7,7 @@
 %for row in rows:
   <tr>
   %for col in row:
-    <td>{{str(col).upper()}}</td>
+    <td>{{str(col)}}</td>
   %end
   </tr>
 %end

@@ -1,25 +1,7 @@
-import sqlite3
-
 from bottle import route, run, debug, template, request, get, post
 from bottle import default_app
 
-DATABASE = "/home/drdelozier03/mysite/todo.db"
-
-#import sqlite3
-#from bottle import default_app
-
-#@route('/')
-#@route('/todo')
-#@route('/my_todo_list')
-#def todo_list():
-#    conn = sqlite3.connect('todo.db')
-#    c = conn.cursor()
-#    c.execute("SELECT id, task FROM todo WHERE status LIKE '1'")
-#    result = c.fetchall()
-#    c.close()
-#    result = []
-#    output = template('make_table', rows=result)
-#    return output
+import database
 
 #@get('/new')
 #def get_new():
@@ -30,28 +12,23 @@ DATABASE = "/home/drdelozier03/mysite/todo.db"
 #    new = request.GET.task.strip()
 #    conn = sqlite3.connect('todo.db')
 #    c = conn.cursor()
-
 #    c.execute("INSERT INTO todo (task,status) VALUES (?,?)", (new,1))
 #    new_id = c.lastrowid
-
 #    conn.commit()
 #    c.close()
-
 #    return '<p>The new task was inserted into the database, the ID is %s</p>' % new_id
-
-#debug(True)
-#run(host='localhost', port=8080)
 
 @route('/')
 @route('/todo')
 def todo_list():
-    conn = sqlite3.connect(DATABASE)
-    c = conn.cursor()
-    c.execute("SELECT id, task FROM todo WHERE status LIKE '1'")
-    result = c.fetchall()
-    c.close()
+    result = database.get_tasks()
+    print("---")
+    print(result)
+    print("---")
     output = template('make_table', rows=result)
     return output
 
-application = default_app()
+#application = default_app()
+debug(True)
+run(host='localhost', port=8080)
 
