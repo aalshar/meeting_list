@@ -102,3 +102,6 @@ ENV/
 
 # databases
 *.db
+
+# VS code
+.vscode

@@ -8,13 +8,23 @@ client = MongoClient("mongodb://greg:happy121@ds221258.mlab.com:21258/cloudapps"
 db = client.cloudapps
 current_tasks = db.current_tasks
 
-def get_task_list():
-    return list(current_tasks.find())
+def get_tasks():
+    tasks = list(current_tasks.find())
+    for task in tasks:
+        task['_id'] = str(task['_id'])
+    return tasks
+
+def get_tasks_by_status(status):
+    tasks = list(current_tasks.find({"status":status}))
+    for task in tasks:
+        task['_id'] = str(task['_id'])
+    return tasks
 
 def get_task(task_id):
     # Convert from string to ObjectId:
     object_id = ObjectId(task_id)
     task = current_tasks.find_one({'_id': object_id})
+    task['_id'] = str(task['_id'])
     return task
 
 def save_task(task):
