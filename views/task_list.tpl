@@ -9,7 +9,7 @@
         <div width=400 class="w3-card-4 w3-padding" style="min-width: 400px">To-Do List</div>
       </th>
       <th>
-        <div class="w3-card-4 w3-padding"><img src="/static/task-complete.png"></div>
+        <div class="w3-card-4 w3-padding"><img src="/static/task-completed.png"></div>
       </th>
       <th>
         <div class="w3-card-4 w3-padding"><img src="/static/discard-task.png"></div>
