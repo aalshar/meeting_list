@@ -1,9 +1,14 @@
 import pymongo
 
+import private
+
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
-client = MongoClient("mongodb://greg:happy121@ds221258.mlab.com:21258/cloudapps")
+connection_string = "mongodb://{u}:{p}@ds221258.mlab.com:21258/cloudapps"
+
+client = MongoClient(connection_string.format(u=private.mongo_user,
+                                              p=private.mongo_password))
 
 db = client.cloudapps
 current_tasks = db.current_tasks
