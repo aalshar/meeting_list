@@ -72,5 +72,5 @@ def setup():
 setup()
 #application = default_app()
 debug(True)
-run(host='localhost', port=8080)
+run(host='0.0.0.0', port=8080)
 
