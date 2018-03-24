@@ -1,4 +1,4 @@
-<head><title>To-Do List</title></head>
+l<head><title>Your meetings</title></head>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 <form action="/new-task" method="post">
@@ -6,19 +6,25 @@
   <table>
     <tr>
       <th>
-        <div width=400 class="w3-card-4 w3-padding" style="min-width: 400px">To-Do List</div>
+        <div width=400 class="w3-card-4 w3-yellow" style="min-width:400px background:red  ">Your Meetings</div>
       </th>
       <th>
-        <div class="w3-card-4 w3-padding"><img src="/static/task-completed.png"></div>
+        <div class="w3-card-4 w3-red"><img src="/static/task-completed.png"></div>
       </th>
       <th>
-        <div class="w3-card-4 w3-padding"><img src="/static/discard-task.png"></div>
+        <div class="w3-card-4 w3-blue"><img src="/static/discard-task.png"></div>
       </th>
-    </tr>
+	<th>
+        <div class="w3-card-4 w3-green"><img src="/static/edit-task.png"></div>
+      </th>
+	 <th>
+        <div class="w3-card-4 w3-silver"> <a href="dashboard"> <img src="/static/dashboard-task.png"> </a> </div>
+      </th>    
+</tr>
     <tr>
       <td>
-        <div class="w3-card-4 w3-padding">
-          <input autofocus type="text" name="new_task_description" placeholder="New task..." style="min-width: 400px">
+        <div class="w3-card-4 w3-silver">
+          <input autofocus type="text" name="new_task_description" placeholder="New meeting [Time]..." style="min-width: 400px">
         </div>
       </td>
       <td>
@@ -33,10 +39,13 @@
           </a>
         </div>
       </td>
+
+   
+
     %for task in tasks:
       <tr>
         <td>
-          <div class="w3-card-4 w3-padding">{{task['description']}}</div>
+          <div class="w3-card-4 w3-green">{{task['description']}}</div>
         </td>
         <td>
           <div class="w3-padding w3-center">
@@ -58,6 +67,14 @@
             </a>
           </div>
         </td>
+        <td>
+          <div class="w3-padding w3-center">
+            <a href="/edit-task/{{task['_id']}}">
+              <img src="/static/edit-task.png">
+            </a>
+          </div>
+        </td>
+	 <td>
       </tr>
     %end
   </table>
@@ -72,7 +89,7 @@
       <img src="/static/task-active.png" style="padding-bottom:5px">
     </a>
   %end
-  Show completed tasks
+  Show completed meetings
   </div>
 </div>
 </form>
